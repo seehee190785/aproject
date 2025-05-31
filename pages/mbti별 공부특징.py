@@ -25,9 +25,14 @@ st.set_page_config(page_title="MBTI별 공부 특징", page_icon="🎓", layout=
 st.title("🧬 MBTI별 공부 스타일")
 st.markdown("당신의 **MBTI 유형**은 어떤 **공부 습관**을 가지고 있을까요? 😄")
 
-selected_mbti = st.selectbox("MBTI 유형을 선택하세요", list(mbti_study_traits.keys()))
+# 선택지에 첫 번째로 안내 문구 추가
+mbti_options = ["MBTI 유형을 선택하세요"] + list(mbti_study_traits.keys())
+selected_mbti = st.selectbox("MBTI 유형을 선택하세요", mbti_options)
 
-emoji, description = mbti_study_traits[selected_mbti]
-
-st.markdown(f"### {emoji} {selected_mbti}의 공부 특징")
-st.write(description)
+# 실제 MBTI가 선택된 경우만 출력
+if selected_mbti in mbti_study_traits:
+    emoji, description = mbti_study_traits[selected_mbti]
+    st.markdown(f"### {emoji} {selected_mbti}의 공부 특징")
+    st.write(description)
+else:
+    st.info("왼쪽에서 MBTI 유형을 선택해 주세요 🙂")
