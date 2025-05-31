@@ -1,8 +1,4 @@
-import streamlit as st
-import yfinance as yf
-import pandas as pd
-import plotly.express as px
-from datetime import date, timedelta
+import aquriments.txt
 
 st.set_page_config(page_title="Top 10 기업 시가총액 변화", layout="wide")
 
