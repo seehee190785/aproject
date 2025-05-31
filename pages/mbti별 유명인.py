@@ -25,9 +25,14 @@ st.set_page_config(page_title="MBTI별 성공한 인물", page_icon="🌟", layo
 st.title("🌟 MBTI별 성공한 사람")
 st.markdown("MBTI 유형별 대표적인 성공 인물을 만나보세요! 💡")
 
-selected_mbti = st.selectbox("MBTI 유형을 선택하세요", list(mbti_success_data.keys()))
+# 옵션 리스트에 안내 문구 추가
+mbti_options = ["MBTI 유형을 선택하세요"] + list(mbti_success_data.keys())
+selected_mbti = st.selectbox("MBTI 유형을 선택하세요", mbti_options)
 
-emoji, name, description = mbti_success_data[selected_mbti]
-
-st.markdown(f"## {emoji} {selected_mbti} - **{name}**")
-st.write(description)
+# 실제 MBTI가 선택된 경우만 표시
+if selected_mbti in mbti_success_data:
+    emoji, name, description = mbti_success_data[selected_mbti]
+    st.markdown(f"## {emoji} {selected_mbti} - **{name}**")
+    st.write(description)
+else:
+    st.info("왼쪽에서 MBTI 유형을 선택해 주세요 🙂")
