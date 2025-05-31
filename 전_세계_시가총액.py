@@ -1,4 +1,4 @@
-improt streamlit as st
+import streamlit as st
 
 st.set_page_config(page_title="Top 10 기업 시가총액 변화", layout="wide")
 
